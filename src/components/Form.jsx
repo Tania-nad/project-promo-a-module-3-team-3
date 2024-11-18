@@ -1,4 +1,12 @@
-const Form = () => {
+//import { useState } from "react";
+
+function Form() {
+  // const [nameProject, setNameProject] = useState("");
+  // const handleChangeName = (event) => {
+  //   console.log(handleChangeName);
+  //   setNameProject(event.target.value);
+  // };
+
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -10,6 +18,7 @@ const Form = () => {
           name="name"
           id="name"
           placeholder="Nombre del proyecto"
+          // onChange={handleProjectName}
         />
         <input
           className="addForm__input"
@@ -92,5 +101,5 @@ const Form = () => {
       </fieldset>
     </form>
   );
-};
+}
 export default Form;
