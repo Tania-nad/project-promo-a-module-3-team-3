@@ -1,24 +1,24 @@
-//import { useState } from "react";
+/* Ya he instalado prop types pero ahora hay que añadirlo no se donde para que no de error:
+import PropTypes from 'prop-types’;
+*/
 
-function Form() {
-  // const [nameProject, setNameProject] = useState("");
-  // const handleChangeName = (event) => {
-  //   console.log(handleChangeName);
-  //   setNameProject(event.target.value);
-  // };
-
+function Form({onChangeInput}) {
+  const handleChangeProject = (event) => {
+    onChangeInput(event.target.value);
+    
+  }
   return (
+
     <form className="addForm">
       <h2 className="title">Información</h2>
       <fieldset className="addForm__group">
         <legend className="addForm__title">Cuéntanos sobre el proyecto</legend>
-        <input
-          className="addForm__input"
+        <input onChange = {handleChangeProject}
+          className="addForm__input" 
           type="text"
           name="name"
           id="name"
           placeholder="Nombre del proyecto"
-          // onChange={handleProjectName}
         />
         <input
           className="addForm__input"
