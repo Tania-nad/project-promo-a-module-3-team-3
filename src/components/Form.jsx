@@ -1,6 +1,3 @@
-/* Ya he instalado prop types pero ahora hay que añadirlo no se donde para que no de error:
-
-*/
 import PropTypes from "prop-types";
 
 function Form({ onChangeInput }) {
