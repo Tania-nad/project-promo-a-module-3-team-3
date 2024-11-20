@@ -1,11 +1,8 @@
+import icon from "../images/adalab.png";
 const Footer = () => {
   return (
     <footer className="footer">
-      <img
-        className="logoSponsor"
-        src="./images/adalab.png"
-        alt="Logo Adalab"
-      />
+      <img className="logoSponsor" src={icon} alt="Logo Adalab" />
     </footer>
   );
 };
