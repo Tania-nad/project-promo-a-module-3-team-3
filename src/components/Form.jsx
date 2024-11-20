@@ -1,20 +1,20 @@
 /* Ya he instalado prop types pero ahora hay que añadirlo no se donde para que no de error:
-import PropTypes from 'prop-types’;
-*/
 
-function Form({onChangeInput}) {
+*/
+import PropTypes from "prop-types";
+
+function Form({ onChangeInput }) {
   const handleChangeProject = (event) => {
     onChangeInput(event.target.value);
-    
-  }
+  };
   return (
-
     <form className="addForm">
       <h2 className="title">Información</h2>
       <fieldset className="addForm__group">
         <legend className="addForm__title">Cuéntanos sobre el proyecto</legend>
-        <input onChange = {handleChangeProject}
-          className="addForm__input" 
+        <input
+          onChange={handleChangeProject}
+          className="addForm__input"
           type="text"
           name="name"
           id="name"
@@ -103,3 +103,6 @@ function Form({onChangeInput}) {
   );
 }
 export default Form;
+Form.propTypes = {
+  onChangeInput: PropTypes.object,
+};
