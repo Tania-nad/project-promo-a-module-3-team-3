@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 
-function Form({ onChangeInput }) {
+function Form(props) {
   const handleChangeProject = (event) => {
-    onChangeInput(event.target.value);
+    props.onChangeInput(event.target.value);
   };
+  //const handleChangeSlogan = (event) => {
+  //props.onChangeSlogan(event.target.value);
+  //};
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -18,6 +21,7 @@ function Form({ onChangeInput }) {
           placeholder="Nombre del proyecto"
         />
         <input
+          //onChange={handleChangeSlogan}
           className="addForm__input"
           type="text"
           name="slogan"

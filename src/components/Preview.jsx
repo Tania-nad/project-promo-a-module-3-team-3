@@ -1,14 +1,12 @@
+import PropTypes from "prop-types";
+
 const Preview = (props) => {
-  
-
   return (
-
     <section className="preview">
       <div className="projectImage"></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
-            
             {props.nameProjectUser}
           </span>
         </h2>
@@ -20,7 +18,7 @@ const Preview = (props) => {
         </div>
         <div className="card__project">
           <h3 className="card__name"></h3>
-          <p className="card__slogan">Diseños Exclusivos</p>
+          <p className="card__slogan"></p>
           <h3 className="card__descriptionTitle">Product description</h3>
           <p className="card__description">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
@@ -51,3 +49,6 @@ const Preview = (props) => {
   );
 };
 export default Preview;
+Preview.PropTypes = {
+  nameProjectUser: PropTypes.object,
+};
