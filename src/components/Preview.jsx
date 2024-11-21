@@ -1,25 +1,24 @@
 import PropTypes from "prop-types";
 
-const Preview = ({ nameProjectUser, technologies }) => {
-    return (
-
+const Preview = (props) => {
+  return (
     <section className="preview">
       <div className="projectImage"></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
-            {nameProjectUser}
+            {props.nameProjectUser}
           </span>
         </h2>
 
         <div className="card__author">
           <div className="card__authorPhoto"></div>
-          <p className="card__job">Full stack Developer</p>
-          <h3 className="card__name">Emmelie Bjôrklund</h3>
+          <p className="card__job">{props.jobProjectUser}</p>
+          <h3 className="card__name">{props.authorProjectUser}</h3>
         </div>
         <div className="card__project">
           <h3 className="card__name"></h3>
-          <p className="card__slogan">Diseños Exclusivos</p>
+          <p className="card__slogan">{props.sloganProjectUser}</p>
           <h3 className="card__descriptionTitle">Product description</h3>
           <p className="card__description">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
@@ -27,7 +26,7 @@ const Preview = ({ nameProjectUser, technologies }) => {
           </p>
 
           <div className="card__technicalInfo">
-            <p className="card__technologies">{technologies}</p>
+            <p className="card__technologies"></p>
 
             <a
               className="icon icon__www"
@@ -51,7 +50,10 @@ const Preview = ({ nameProjectUser, technologies }) => {
 };
 
 Preview.propTypes = {
-  nameProjectUser: PropTypes.string.isRequired,
-  technologies : PropTypes.string.isRequired,
-}
+  nameProjectUser: PropTypes.string,
+  technologies: PropTypes.string,
+};
 export default Preview;
+Preview.PropTypes = {
+  nameProjectUser: PropTypes.function,
+};

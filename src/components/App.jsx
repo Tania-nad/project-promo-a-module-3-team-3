@@ -4,24 +4,26 @@ import Preview from "./Preview";
 import Hero from "./Hero";
 import Form from "./Form";
 import Footer from "./Footer";
-import {useState} from "react";
+import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("");
-  const [technologies, setTechnologies] = useState("React JS - HTML -CSS");
-  
-  // Función para manejar el cambio en el nombre del proyecto
-  const handleNameProject = (nameProject) => {
-    setName (nameProject);
+  const [name, setName] = useState("Nombre del proyecto");
+  const [slogan, setSlogan] = useState("Slogan");
+  const [author, setAuthor] = useState("Nombre de la autora");
+  const [job, setJob] = useState("Profesión");
 
+  const handleNameProject = (nameProject) => {
+    setName(nameProject);
   };
- // Función para manejar el cambio en los inputs (incluye tecnologías)
-  const handleValueInput = (value, id) => {
-    if (id === "technologies") {
-      setTechnologies(value);
-  
-  }
-};
+  const handleChangeSlogan = (sloganProject) => {
+    setSlogan(sloganProject);
+  };
+  const handleAuthorProject = (authorProject) => {
+    setAuthor(authorProject);
+  };
+  const handleJobProject = (jobProject) => {
+    setJob(jobProject);
+  };
 
   return (
     <>
@@ -29,13 +31,18 @@ function App() {
         <Header />
         <main className="main">
           <Hero />
-          <Preview 
+          <Preview
             nameProjectUser={name}
-            technologies={technologies} />
-          <Form 
-          onChangeInput = {handleValueInput} 
-          onChangeName = {handleNameProject}
-          /> 
+            sloganProjectUser={slogan}
+            authorProjectUser={author}
+            jobProjectUser={job}
+          />
+          <Form
+            onChangeInput={handleNameProject}
+            onChangeSlogan={handleChangeSlogan}
+            onChangeAuthor={handleAuthorProject}
+            onChangeJob={handleJobProject}
+          />
         </main>
 
         <Footer />

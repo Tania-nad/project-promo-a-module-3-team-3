@@ -1,13 +1,17 @@
 import PropTypes from "prop-types";
 
-function Form({ onChangeInput, onChangeName }) {
+function Form(props) {
   const handleChangeProject = (event) => {
-     // Verificar si es el campo del nombre del proyecto o cualquier otro
-    if (event.target.id === "name") {
-      onChangeName(event.target.value); // Llama a onChangeName si el ID es "name"
-    } else {
-    onChangeInput(event.target.value, event.target.id);
-    }
+    props.onChangeInput(event.target.value);
+  };
+  const handleChangeSlogan = (event) => {
+    props.onChangeSlogan(event.target.value);
+  };
+  const handleAuthorName = (event) => {
+    props.onChangeAuthor(event.target.value);
+  };
+  const handleChangeJob = (event) => {
+    props.onChangeJob(event.target.value);
   };
   return (
     <form className="addForm">
@@ -23,6 +27,7 @@ function Form({ onChangeInput, onChangeName }) {
           placeholder="Nombre del proyecto"
         />
         <input
+          onChange={handleChangeSlogan}
           className="addForm__input"
           type="text"
           name="slogan"
@@ -46,7 +51,7 @@ function Form({ onChangeInput, onChangeName }) {
           />
         </div>
         <input
-        onChange={handleChangeProject}
+          onChange={handleChangeProject}
           className="addForm__input"
           type="text"
           name="technologies"
@@ -71,6 +76,7 @@ function Form({ onChangeInput, onChangeName }) {
           name="autor"
           id="autor"
           placeholder="Nombre"
+          onChange={handleAuthorName}
         />
         <input
           className="addForm__input"
@@ -78,6 +84,7 @@ function Form({ onChangeInput, onChangeName }) {
           name="job"
           id="job"
           placeholder="Trabajo"
+          onChange={handleChangeJob}
         />
       </fieldset>
 
@@ -106,12 +113,9 @@ function Form({ onChangeInput, onChangeName }) {
   );
 }
 
-
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  onChangeName: PropTypes.func.isRequired, // Declaramos la nueva prop
+  onChangeName: PropTypes.func, // Declaramos la nueva prop
 };
 
 export default Form;
-
-
