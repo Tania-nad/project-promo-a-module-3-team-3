@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
 
-function Form({ onChangeInput }) {
+function Form({ onChangeInput, onChangeName }) {
   const handleChangeProject = (event) => {
-    onChangeInput(event.target.value);
+     // Verificar si es el campo del nombre del proyecto o cualquier otro
+    if (event.target.id === "name") {
+      onChangeName(event.target.value); // Llama a onChangeName si el ID es "name"
+    } else {
+    onChangeInput(event.target.value, event.target.id);
+    }
   };
   return (
     <form className="addForm">
@@ -41,6 +46,7 @@ function Form({ onChangeInput }) {
           />
         </div>
         <input
+        onChange={handleChangeProject}
           className="addForm__input"
           type="text"
           name="technologies"
@@ -99,7 +105,13 @@ function Form({ onChangeInput }) {
     </form>
   );
 }
-export default Form;
+
+
 Form.propTypes = {
-  onChangeInput: PropTypes.object,
+  onChangeInput: PropTypes.func.isRequired,
+  onChangeName: PropTypes.func.isRequired, // Declaramos la nueva prop
 };
+
+export default Form;
+
+

@@ -1,15 +1,14 @@
-const Preview = (props) => {
-  
+import PropTypes from "prop-types";
 
-  return (
+const Preview = ({ nameProjectUser, technologies }) => {
+    return (
 
     <section className="preview">
       <div className="projectImage"></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
-            
-            {props.nameProjectUser}
+            {nameProjectUser}
           </span>
         </h2>
 
@@ -28,7 +27,7 @@ const Preview = (props) => {
           </p>
 
           <div className="card__technicalInfo">
-            <p className="card__technologies">React JS - HTML - CSS</p>
+            <p className="card__technologies">{technologies}</p>
 
             <a
               className="icon icon__www"
@@ -50,4 +49,9 @@ const Preview = (props) => {
     </section>
   );
 };
+
+Preview.propTypes = {
+  nameProjectUser: PropTypes.string.isRequired,
+  technologies : PropTypes.string.isRequired,
+}
 export default Preview;

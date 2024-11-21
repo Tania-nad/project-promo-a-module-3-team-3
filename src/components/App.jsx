@@ -8,10 +8,20 @@ import {useState} from "react";
 
 function App() {
   const [name, setName] = useState("");
+  const [technologies, setTechnologies] = useState("React JS - HTML -CSS");
+  
+  // Función para manejar el cambio en el nombre del proyecto
   const handleNameProject = (nameProject) => {
     setName (nameProject);
 
   };
+ // Función para manejar el cambio en los inputs (incluye tecnologías)
+  const handleValueInput = (value, id) => {
+    if (id === "technologies") {
+      setTechnologies(value);
+  
+  }
+};
 
   return (
     <>
@@ -19,8 +29,13 @@ function App() {
         <Header />
         <main className="main">
           <Hero />
-          <Preview nameProjectUser={name} />
-          <Form onChangeInput = {handleNameProject} /> 
+          <Preview 
+            nameProjectUser={name}
+            technologies={technologies} />
+          <Form 
+          onChangeInput = {handleValueInput} 
+          onChangeName = {handleNameProject}
+          /> 
         </main>
 
         <Footer />
