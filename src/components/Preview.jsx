@@ -50,5 +50,5 @@ const Preview = (props) => {
 };
 export default Preview;
 Preview.PropTypes = {
-  nameProjectUser: PropTypes.object,
+  nameProjectUser: PropTypes.function,
 };
