@@ -4,9 +4,9 @@ function Form(props) {
   const handleChangeProject = (event) => {
     props.onChangeInput(event.target.value);
   };
-  //const handleChangeSlogan = (event) => {
-  //props.onChangeSlogan(event.target.value);
-  //};
+  const handleChangeSlogan = (event) => {
+    props.onChangeSlogan(event.target.value);
+  };
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -21,7 +21,7 @@ function Form(props) {
           placeholder="Nombre del proyecto"
         />
         <input
-          //onChange={handleChangeSlogan}
+          onChange={handleChangeSlogan}
           className="addForm__input"
           type="text"
           name="slogan"

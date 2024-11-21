@@ -8,24 +8,25 @@ import { useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
+  const [slogan, setSlogan] = useState("");
   //const [slogan, setSlogan] = useState("");
   const handleNameProject = (nameProject) => {
     setName(nameProject);
   };
-  /*const handleSloganProject = (sloganProject) => {
+  const handleChangeSlogan = (sloganProject) => {
     setSlogan(sloganProject);
   };
-  */
+
   return (
     <>
       <div className="container">
         <Header />
         <main className="main">
           <Hero />
-          <Preview nameProjectUser={name} />
+          <Preview nameProjectUser={name} sloganProjectUser={slogan} />
           <Form
             onChangeInput={handleNameProject}
-            //onChangeSlogan={handleSloganProject}
+            onChangeSlogan={handleChangeSlogan}
           />
         </main>
 
