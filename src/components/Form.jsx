@@ -13,6 +13,12 @@ function Form(props) {
   const handleChangeJob = (event) => {
     props.onChangeJob(event.target.value);
   };
+  const handleChangeTech = (event) => {
+    props.onChangeTech(event.target.value);
+  };
+  const handleChangeDesc = (event) => {
+    props.onChangeDesc(event.target.value);
+  };
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -51,7 +57,7 @@ function Form(props) {
           />
         </div>
         <input
-          onChange={handleChangeProject}
+          onChange={handleChangeTech}
           className="addForm__input"
           type="text"
           name="technologies"
@@ -59,6 +65,7 @@ function Form(props) {
           placeholder="Tecnologías"
         />
         <textarea
+          onChange={handleChangeDesc}
           className="addForm__input"
           type="text"
           name="desc"

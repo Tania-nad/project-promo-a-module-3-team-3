@@ -20,13 +20,10 @@ const Preview = (props) => {
           <h3 className="card__name"></h3>
           <p className="card__slogan">{props.sloganProjectUser}</p>
           <h3 className="card__descriptionTitle">Product description</h3>
-          <p className="card__description">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-            quos? Itaque, molestias eveniet laudantium adipisci vitae ratione
-          </p>
+          <p className="card__description">{props.descProjectUser}</p>
 
           <div className="card__technicalInfo">
-            <p className="card__technologies"></p>
+            <p className="card__technologies">{props.techProjectUser}</p>
 
             <a
               className="icon icon__www"

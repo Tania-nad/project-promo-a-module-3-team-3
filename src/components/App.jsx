@@ -7,22 +7,40 @@ import Footer from "./Footer";
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("Nombre del proyecto");
-  const [slogan, setSlogan] = useState("Slogan");
-  const [author, setAuthor] = useState("Nombre de la autora");
-  const [job, setJob] = useState("Profesión");
+  //const [name, setName] = useState("Nombre del proyecto");
+  //const [slogan, setSlogan] = useState("Slogan");
+  //const [author, setAuthor] = useState("Nombre de la autora");
+  //const [job, setJob] = useState("Profesión");
+  const [project, setProject] = useState({
+    name: "Nombre del proyecto",
+    slogan: "Slogan del proyecto",
+    technologies: "Tecnologías",
+    repo: "",
+    demo: "",
+    desc: "Descripción del proyecto",
+    autor: "Nombre de la autora",
+    job: "Trabajo de la autora",
+    image: "",
+    photo: "",
+  });
 
   const handleNameProject = (nameProject) => {
-    setName(nameProject);
+    setProject({ ...project, name: nameProject });
   };
   const handleChangeSlogan = (sloganProject) => {
-    setSlogan(sloganProject);
+    setProject({ ...project, slogan: sloganProject });
   };
-  const handleAuthorProject = (authorProject) => {
-    setAuthor(authorProject);
+  const handleTechProject = (techProject) => {
+    setProject({ ...project, technologies: techProject });
+  };
+  const handleAuthorProject = (autorProject) => {
+    setProject({ ...project, autor: autorProject });
   };
   const handleJobProject = (jobProject) => {
-    setJob(jobProject);
+    setProject({ ...project, job: jobProject });
+  };
+  const handleDescProject = (descProject) => {
+    setProject({ ...project, desc: descProject });
   };
 
   return (
@@ -32,16 +50,20 @@ function App() {
         <main className="main">
           <Hero />
           <Preview
-            nameProjectUser={name}
-            sloganProjectUser={slogan}
-            authorProjectUser={author}
-            jobProjectUser={job}
+            nameProjectUser={project.name}
+            sloganProjectUser={project.slogan}
+            techProjectUser={project.technologies}
+            authorProjectUser={project.autor}
+            jobProjectUser={project.job}
+            descProjectUser={project.desc}
           />
           <Form
             onChangeInput={handleNameProject}
             onChangeSlogan={handleChangeSlogan}
             onChangeAuthor={handleAuthorProject}
             onChangeJob={handleJobProject}
+            onChangeTech={handleTechProject}
+            onChangeDesc={handleDescProject}
           />
         </main>
 
