@@ -6,6 +6,7 @@ import Form from "./Form";
 import Footer from "./Footer";
 import { useState } from "react";
 
+
 function App() {
   //const [name, setName] = useState("Nombre del proyecto");
   //const [slogan, setSlogan] = useState("Slogan");
@@ -22,6 +23,9 @@ function App() {
     job: "Trabajo de la autora",
     image: "",
     photo: "",
+    //Añadimos ambas imágenes:
+    imageProject: "",
+    imageAuthor: "",
   });
 
   const handleNameProject = (nameProject) => {
@@ -42,6 +46,13 @@ function App() {
   const handleDescProject = (descProject) => {
     setProject({ ...project, desc: descProject });
   };
+  // Añadimos ambas imágenes: 
+  const handleProjectImage = (image) => {
+    setProject({...project, imageProject: image});
+  };
+  const handleAuthorImage = (image) => {
+    setProject({...project, imageAuthor: image });
+  };
 
   return (
     <>
@@ -56,6 +67,9 @@ function App() {
             authorProjectUser={project.autor}
             jobProjectUser={project.job}
             descProjectUser={project.desc}
+            // Añadimos ambas imágenes
+            imageProjectUser={project.imageProject}
+            imageAuthorUser={project.imageAuthor}
           />
           <Form
             onChangeInput={handleNameProject}
@@ -64,7 +78,10 @@ function App() {
             onChangeJob={handleJobProject}
             onChangeTech={handleTechProject}
             onChangeDesc={handleDescProject}
-          />
+            // Añadimos ambas imágenes
+            onChangeProjectImage={handleProjectImage}
+            onChangeAuthorImage={handleAuthorImage}          
+            />
         </main>
 
         <Footer />

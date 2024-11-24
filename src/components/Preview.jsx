@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 const Preview = (props) => {
   return (
     <section className="preview">
-      <div className="projectImage"></div>
+      {/* Imagen del proyecto */}
+      <div className="projectImage">
+      {props.imageProjectUser ? (
+          <img src={props.imageProjectUser} alt="Imagen del proyecto" className="projectImage__img" />
+        ) : null}
+      </div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
@@ -12,7 +17,12 @@ const Preview = (props) => {
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto"></div>
+          {/* Foto de la autora */}
+          <div className="card__authorPhoto">
+          {props.imageAuthorUser ? (
+              <img src={props.imageAuthorUser} alt="Imagen de la autora" className="authorPhoto__img" />
+            ) : null}
+          </div>
           <p className="card__job">{props.jobProjectUser}</p>
           <h3 className="card__name">{props.authorProjectUser}</h3>
         </div>
@@ -49,6 +59,8 @@ const Preview = (props) => {
 Preview.propTypes = {
   nameProjectUser: PropTypes.string,
   technologies: PropTypes.string,
+  imageProjectUser: PropTypes.string, // Puede ser null si no se sube la imagen
+  imageAuthorUser: PropTypes.string,  // Puede ser null si no se sube la imagen
 };
 export default Preview;
 Preview.PropTypes = {
