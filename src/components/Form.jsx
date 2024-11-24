@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import GetAvatar from "./GetAvatar";
 
 function Form(props) {
   const handleChangeProject = (event) => {
@@ -116,6 +117,7 @@ function Form(props) {
         />
         <button className="button--large">Guardar proyecto</button>
       </fieldset>
+      <GetAvatar />
     </form>
   );
 }
