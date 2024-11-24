@@ -22,6 +22,7 @@ function App() {
     job: "Trabajo de la autora",
     image: "",
     photo: "",
+    imageProject: "",
   });
 
   const handleNameProject = (nameProject) => {
@@ -42,6 +43,9 @@ function App() {
   const handleDescProject = (descProject) => {
     setProject({ ...project, desc: descProject });
   };
+  const handleImageProject = (imgProject) => {
+    setProject({ ...project, imageProject: imgProject });
+  };
 
   return (
     <>
@@ -56,6 +60,7 @@ function App() {
             authorProjectUser={project.autor}
             jobProjectUser={project.job}
             descProjectUser={project.desc}
+            imgProjectUser={project.imageProject}
           />
           <Form
             onChangeInput={handleNameProject}
@@ -64,6 +69,7 @@ function App() {
             onChangeJob={handleJobProject}
             onChangeTech={handleTechProject}
             onChangeDesc={handleDescProject}
+            onClickImage={handleImageProject}
           />
         </main>
 

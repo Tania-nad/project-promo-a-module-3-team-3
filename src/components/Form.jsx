@@ -20,6 +20,9 @@ function Form(props) {
   const handleChangeDesc = (event) => {
     props.onChangeDesc(event.target.value);
   };
+  const handleChangeProjectImage = (event) => {
+    props.onClickImage(event.target.value);
+  };
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -95,6 +98,11 @@ function Form(props) {
           onChange={handleChangeJob}
         />
       </fieldset>
+      <GetAvatar
+        text="subir foto del proyecto "
+        upDateAvatar={handleChangeProjectImage}
+      />
+      <GetAvatar text="subir foto de la autora " />
 
       <fieldset className="addForm__group--upload">
         <label htmlFor="image" className="button">
