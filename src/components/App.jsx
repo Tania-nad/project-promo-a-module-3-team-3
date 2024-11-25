@@ -42,6 +42,12 @@ function App() {
   const handleDescProject = (descProject) => {
     setProject({ ...project, desc: descProject });
   };
+  const handleDemoProject= (demoProject) => {
+    setProject({ ...project, demo: demoProject });
+  };
+  const handleRepoProject = (RepoProject) => {
+    setProject({ ...project, repo: RepoProject });
+  };
 
   return (
     <>
@@ -56,6 +62,9 @@ function App() {
             authorProjectUser={project.autor}
             jobProjectUser={project.job}
             descProjectUser={project.desc}
+            demoProjectUser={project.demo}
+            repoProjectUser={project.repo}
+
           />
           <Form
             onChangeInput={handleNameProject}
@@ -64,6 +73,8 @@ function App() {
             onChangeJob={handleJobProject}
             onChangeTech={handleTechProject}
             onChangeDesc={handleDescProject}
+            onChangeDemo={handleDemoProject}
+            onChangeRepo={handleRepoProject}
           />
         </main>
 

@@ -27,14 +27,14 @@ const Preview = (props) => {
 
             <a
               className="icon icon__www"
-              href="#"
+              href={props.demoProjectUser}
               title="Haz click para ver el proyecto online"
             >
               Web link
             </a>
             <a
               className="icon icon__github"
-              href="#"
+              href={props.repoProjectUser}
               title="Haz click para ver el código del proyecto"
             >
               GitHub link

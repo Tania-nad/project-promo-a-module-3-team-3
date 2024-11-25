@@ -19,6 +19,12 @@ function Form(props) {
   const handleChangeDesc = (event) => {
     props.onChangeDesc(event.target.value);
   };
+   const handleChangeRepo = (event) => {
+    props.onChangeRepo(event.target.value);
+  };
+   const handleChangeDemo = (event) => {
+    props.onChangeDemo(event.target.value);
+  };
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -43,17 +49,21 @@ function Form(props) {
         <div className="addForm__2col">
           <input
             className="addForm__input"
+            onChange={handleChangeRepo}
             type="url"
             name="repo"
             id="repo"
             placeholder="Repositorio"
+            
           />
           <input
             className="addForm__input"
+            onChange={handleChangeDemo}
             type="url"
             name="demo"
             id="demo"
             placeholder="Demo"
+            //target="_blank" no unciona en un input
           />
         </div>
         <input
