@@ -59,6 +59,8 @@ function App() {
         <main className="main">
           <Hero />
           <Preview
+          /* tenemos que pasar un objeto con todas las props que sera un objeto, project es nuestro objeto, una sola prop con todas esas propiedades y en preview pasamos project.propiedad
+          */
             nameProjectUser={project.name}
             sloganProjectUser={project.slogan}
             techProjectUser={project.technologies}
@@ -66,8 +68,8 @@ function App() {
             jobProjectUser={project.job}
             descProjectUser={project.desc}
             // Añadimos ambas imágenes
-            imageProjectUser={project.imageProject}
-            imageAuthorUser={project.imageAuthor}
+            photo={project.photo}
+            image={project.image}
           />
           <Form
             onChangeInput={handleNameProject}

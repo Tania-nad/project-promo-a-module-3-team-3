@@ -5,8 +5,8 @@ const Preview = (props) => {
     <section className="preview">
       {/* Imagen del proyecto */}
       <div className="projectImage">
-      {props.imageProjectUser ? (
-          <img src={props.imageProjectUser} alt="Imagen del proyecto" className="projectImage__img" />
+      {props.photo ? (
+          <img src={props.photo} alt="Imagen del proyecto" className="projectImage__img" />
         ) : null}
       </div>
       <article className="card">
@@ -19,8 +19,8 @@ const Preview = (props) => {
         <div className="card__author">
           {/* Foto de la autora */}
           <div className="card__authorPhoto">
-          {props.imageAuthorUser ? (
-              <img src={props.imageAuthorUser} alt="Imagen de la autora" className="authorPhoto__img" />
+          {props.image ? (
+              <img src={props.image} alt="Imagen de la autora" className="authorPhoto__img" />
             ) : null}
           </div>
           <p className="card__job">{props.jobProjectUser}</p>
