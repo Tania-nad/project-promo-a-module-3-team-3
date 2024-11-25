@@ -59,10 +59,13 @@ const getImage = () => {
 
     return (
     <div className="get-avatar">
-        <label className="get-avatar__label">
+        <label className="button" htmlFor="photo">
         {text}
         <input
+            className="addForm__hidden"
             type="file"
+            name="photo"
+            id="photo"
             ref={myFileField}
             style={{ display: 'none' }}
             onChange={uploadImage}

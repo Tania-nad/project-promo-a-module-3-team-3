@@ -104,28 +104,10 @@ function Form(props) {
       </fieldset>
 
       
-      <GetAvatar updateAvatar={handleChangeProjectImage} />
-      <GetAvatar updateAvatar={handleChangeAuthorImage} />
+      <GetAvatar text="Subir foto de la autora" updateAvatar={handleChangeProjectImage} />
+      <GetAvatar text="Subir foto del proyecto" updateAvatar={handleChangeAuthorImage} />
 
       <fieldset className="addForm__group--upload">
-        <label htmlFor="image" className="button">
-          Subir foto del proyecto
-        </label>
-        <input
-          className="addForm__hidden"
-          type="file"
-          name="image"
-          id="image"
-        />
-        <label htmlFor="photo" className="button">
-          Subir foto de la autora
-        </label>
-        <input
-          className="addForm__hidden"
-          type="file"
-          name="photo"
-          id="photo"
-        />
         <button className="button--large">Guardar proyecto</button>
       </fieldset>
     </form>

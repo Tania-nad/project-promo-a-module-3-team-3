@@ -23,9 +23,7 @@ function App() {
     job: "Trabajo de la autora",
     image: "",
     photo: "",
-    //Añadimos ambas imágenes:
-    imageProject: "",
-    imageAuthor: "",
+  
   });
 
   const handleNameProject = (nameProject) => {
@@ -48,10 +46,10 @@ function App() {
   };
   // Añadimos ambas imágenes: 
   const handleProjectImage = (image) => {
-    setProject({...project, imageProject: image});
+    setProject({...project, photo: image});
   };
   const handleAuthorImage = (image) => {
-    setProject({...project, imageAuthor: image });
+    setProject({...project, image: image });
   };
 
   return (
