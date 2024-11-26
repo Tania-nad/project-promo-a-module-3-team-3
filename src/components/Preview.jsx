@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Preview = (props) => {
   return (
     <section className="preview">
-      <div className="projectImage">{props.imageProjectUser}</div>
+      <div className="projectImage"></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">

@@ -31,6 +31,7 @@ function App() {
       "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsocialenterprise.es%2Fprogramas%2Fformacion-social-enterprises%2Fadalab%2F&psig=AOvVaw25EE_IPd39ZTN-_WQwgK9E&ust=1732722734374000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDiuamt-okDFQAAAAAdAAAAABAE",
     photo:
       "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsocialenterprise.es%2Fprogramas%2Fformacion-social-enterprises%2Fadalab%2F&psig=AOvVaw25EE_IPd39ZTN-_WQwgK9E&ust=1732722734374000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDiuamt-okDFQAAAAAdAAAAABAE",
+    url: "",
   });
 
   const handleNameProject = (nameProject) => {
@@ -66,7 +67,7 @@ function App() {
       },
     }).then((data) => {
       console.log(data);
-      setProject(data);
+
       //pintar en el html la url que devuelve el servidor
     });
   };

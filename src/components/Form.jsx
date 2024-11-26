@@ -32,6 +32,7 @@ function Form(props) {
   const handleClickImage = () => {
     props.onSubmitImage();
   };
+
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
