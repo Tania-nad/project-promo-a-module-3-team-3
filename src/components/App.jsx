@@ -55,63 +55,67 @@ function App() {
   };
   const handleDemoProject = (demoProject) => {
     setProject({ ...project, demo: demoProject });
-  };
-  const handleRepoProject = (RepoProject) => {
-    setProject({ ...project, repo: RepoProject });
-  };
-  const handleSubmitForm = () => {
-    fetch("https://dev.adalab.es/api/projectCard", {
-      method: "POST",
-      body: JSON.stringify(project),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((data) => {
-      console.log(data);
-      //constante para recoger los datos del servidor (url)
-      setUrl(data.url);
+    // Añadimos ambas imágenes:
+    const handleProjectImage = (photo) => {
+      setProject({ ...project, photo: photo });
+    };
+    const handleRepoProject = (RepoProject) => {
+      setProject({ ...project, repo: RepoProject });
+    };
+    const handleSubmitForm = () => {
+      fetch("https://dev.adalab.es/api/projectCard", {
+        method: "POST",
+        body: JSON.stringify(project),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then((data) => {
+        console.log(data);
+        //constante para recoger los datos del servidor (url)
+        setUrl(data.url);
 
-      //pintar en el html la url que devuelve el servidor
-    });
+        //pintar en el html la url que devuelve el servidor
+      });
+    };
+
+    return (
+      <>
+        <div className="container">
+          <Header />
+          <main className="main">
+            <Hero />
+            <Preview
+              /* tenemos que pasar un objeto con todas las props que sera un objeto, project es nuestro objeto, una sola prop con todas esas propiedades y en preview pasamos project.propiedad
+               */
+              nameProjectUser={project.name}
+              sloganProjectUser={project.slogan}
+              techProjectUser={project.technologies}
+              authorProjectUser={project.autor}
+              jobProjectUser={project.job}
+              descProjectUser={project.desc}
+              demoProjectUser={project.demo}
+              repoProjectUser={project.repo}
+              imageProjectUser={project.image}
+            />
+            <Form
+              onChangeInput={handleNameProject}
+              onChangeSlogan={handleChangeSlogan}
+              onChangeAuthor={handleAuthorProject}
+              onChangeJob={handleJobProject}
+              onChangeTech={handleTechProject}
+              onChangeDesc={handleDescProject}
+              onChangeDemo={handleDemoProject}
+              onChangeRepo={handleRepoProject}
+              onSubmitForm={handleSubmitForm}
+            />
+            {url}
+          </main>
+
+          <Footer />
+        </div>
+      </>
+    );
   };
-
-  return (
-    <>
-      <div className="container">
-        <Header />
-        <main className="main">
-          <Hero />
-          <Preview
-            /* tenemos que pasar un objeto con todas las props que sera un objeto, project es nuestro objeto, una sola prop con todas esas propiedades y en preview pasamos project.propiedad
-             */
-            nameProjectUser={project.name}
-            sloganProjectUser={project.slogan}
-            techProjectUser={project.technologies}
-            authorProjectUser={project.autor}
-            jobProjectUser={project.job}
-            descProjectUser={project.desc}
-            demoProjectUser={project.demo}
-            repoProjectUser={project.repo}
-            imageProjectUser={project.image}
-          />
-          <Form
-            onChangeInput={handleNameProject}
-            onChangeSlogan={handleChangeSlogan}
-            onChangeAuthor={handleAuthorProject}
-            onChangeJob={handleJobProject}
-            onChangeTech={handleTechProject}
-            onChangeDesc={handleDescProject}
-            onChangeDemo={handleDemoProject}
-            onChangeRepo={handleRepoProject}
-            onSubmitForm={handleSubmitForm}
-          />
-          {url}
-        </main>
-
-        <Footer />
-      </div>
-    </>
-  );
 }
 
 export default App;
