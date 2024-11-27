@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import GetAvatar from "./GetAvatar";
 
 function Form(props) {
   const handleChangeProject = (event) => {
@@ -112,6 +113,15 @@ function Form(props) {
         />
       </fieldset>
 
+      <GetAvatar
+        text="Subir foto de la autora"
+        updateAvatar={handleChangeProjectImage}
+      />
+      <GetAvatar
+        text="Subir foto del proyecto"
+        updateAvatar={handleChangeAuthorImage}
+      />
+
       <fieldset className="addForm__group--upload">
         <label htmlFor="image" className="button">
           Subir foto del proyecto
@@ -143,6 +153,8 @@ function Form(props) {
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onChangeName: PropTypes.func, // Declaramos la nueva prop
+  onChangeProjectImage: PropTypes.func.isRequired,
+  onChangeAuthorImage: PropTypes.func.isRequired,
 };
 
 export default Form;
