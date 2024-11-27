@@ -74,6 +74,7 @@ function App() {
         //constante para recoger los datos del servidor (url)
         setUrl(data.url);
 
+<<<<<<< HEAD
         //pintar en el html la url que devuelve el servidor
       });
     };
@@ -115,6 +116,11 @@ function App() {
         </div>
       </>
     );
+=======
+      //pintar en el html la url que devuelve el servidor
+      setUrl(data.url);
+    });
+>>>>>>> main
   };
 }
 
