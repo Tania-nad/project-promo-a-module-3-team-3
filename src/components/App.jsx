@@ -67,7 +67,7 @@ function App() {
         "Content-type": "application/json",
       },
     }).then((data) => {
-      console.log(data.url);
+      console.log(data);
       //constante para recoger los datos del servidor (url)
       setUrl(data.url);
 
