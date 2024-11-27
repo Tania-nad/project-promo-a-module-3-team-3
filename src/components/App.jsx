@@ -68,10 +68,8 @@ function App() {
       },
     }).then((data) => {
       console.log(data.url);
-      //constante para recoger los datos del servidor (url)
-      setUrl(data.url);
-
       //pintar en el html la url que devuelve el servidor
+      setUrl(data.url);
     });
   };
 
