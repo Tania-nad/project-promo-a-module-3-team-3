@@ -31,8 +31,9 @@ function App() {
       "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsocialenterprise.es%2Fprogramas%2Fformacion-social-enterprises%2Fadalab%2F&psig=AOvVaw25EE_IPd39ZTN-_WQwgK9E&ust=1732722734374000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDiuamt-okDFQAAAAAdAAAAABAE",
     photo:
       "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsocialenterprise.es%2Fprogramas%2Fformacion-social-enterprises%2Fadalab%2F&psig=AOvVaw25EE_IPd39ZTN-_WQwgK9E&ust=1732722734374000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDiuamt-okDFQAAAAAdAAAAABAE",
-    url: "",
   });
+  //variable de estado que modifica la página para que aparezca la url
+  const [url, setUrl] = useState("");
 
   const handleNameProject = (nameProject) => {
     setProject({ ...project, name: nameProject });
@@ -66,13 +67,12 @@ function App() {
         "Content-type": "application/json",
       },
     }).then((data) => {
-      console.log(data);
+      console.log(data.url);
+      //constante para recoger los datos del servidor (url)
+      setUrl(data.url);
 
       //pintar en el html la url que devuelve el servidor
     });
-  };
-  const handlePhoto = (ImageProject) => {
-    setProject({ ...project, image: ImageProject });
   };
 
   return (
@@ -102,8 +102,8 @@ function App() {
             onChangeDemo={handleDemoProject}
             onChangeRepo={handleRepoProject}
             onSubmitForm={handleSubmitForm}
-            onSubmitImage={handlePhoto}
           />
+          {url}
         </main>
 
         <Footer />
