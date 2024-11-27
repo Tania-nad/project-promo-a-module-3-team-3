@@ -19,12 +19,20 @@ function Form(props) {
   const handleChangeDesc = (event) => {
     props.onChangeDesc(event.target.value);
   };
-   const handleChangeRepo = (event) => {
+  const handleChangeRepo = (event) => {
     props.onChangeRepo(event.target.value);
   };
-   const handleChangeDemo = (event) => {
+  const handleChangeDemo = (event) => {
     props.onChangeDemo(event.target.value);
   };
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    props.onSubmitForm();
+  };
+  const handleClickImage = () => {
+    props.onSubmitImage();
+  };
+
   return (
     <form className="addForm">
       <h2 className="title">Información</h2>
@@ -54,7 +62,6 @@ function Form(props) {
             name="repo"
             id="repo"
             placeholder="Repositorio"
-            
           />
           <input
             className="addForm__input"
@@ -114,6 +121,7 @@ function Form(props) {
           type="file"
           name="image"
           id="image"
+          onClick={handleClickImage}
         />
         <label htmlFor="photo" className="button">
           Subir foto de la autora
@@ -124,7 +132,9 @@ function Form(props) {
           name="photo"
           id="photo"
         />
-        <button className="button--large">Guardar proyecto</button>
+        <button className="button--large" onClick={handleSubmit}>
+          Guardar proyecto
+        </button>
       </fieldset>
     </form>
   );
