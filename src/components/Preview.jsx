@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 const Preview = (props) => {
+  console.log(props);
   return (
     <section className="preview">
       {/* Imagen del proyecto */}

@@ -21,8 +21,9 @@ function Form(props) {
     props.onChangeDesc(event.target.value);
   };
   // Añadimos props a ambas imágenes:
-  const handleChangeProjectImage = (image) => {
-    props.onChangeProjectImage(image);
+  const handleChangeProjectImage = (photo) => {
+    
+    props.onChangeProjectImage(photo);
   };
   const handleChangeAuthorImage = (image) => {
     props.onChangeAuthorImage(image);
@@ -104,8 +105,8 @@ function Form(props) {
       </fieldset>
 
       
-      <GetAvatar text="Subir foto de la autora" updateAvatar={handleChangeProjectImage} />
-      <GetAvatar text="Subir foto del proyecto" updateAvatar={handleChangeAuthorImage} />
+      <GetAvatar text="Subir foto de la autora" updateAvatar={handleChangeAuthorImage} />
+      <GetAvatar text="Subir foto del proyecto" updateAvatar={handleChangeProjectImage} />
 
       <fieldset className="addForm__group--upload">
         <button className="button--large">Guardar proyecto</button>

@@ -21,8 +21,8 @@ function App() {
     desc: "Descripción del proyecto",
     autor: "Nombre de la autora",
     job: "Trabajo de la autora",
-    image: "",
-    photo: "",
+    image: "", //autora
+    photo: "", // proyecto
   
   });
 
@@ -45,8 +45,8 @@ function App() {
     setProject({ ...project, desc: descProject });
   };
   // Añadimos ambas imágenes: 
-  const handleProjectImage = (image) => {
-    setProject({...project, photo: image});
+  const handleProjectImage = (photo) => {
+    setProject({...project, photo: photo});
   };
   const handleAuthorImage = (image) => {
     setProject({...project, image: image });
