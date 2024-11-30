@@ -16,7 +16,7 @@ const Header = () => {
         />
         <h1 className="header__title">Proyectos molones</h1>
       </a>
-      <img className="logoSponsor" src={icon} alt="Logo Adalab" />
+      <h1 className="nameOfProject">BRILLIANT BRAINS</h1>
     </header>
   );
 };
