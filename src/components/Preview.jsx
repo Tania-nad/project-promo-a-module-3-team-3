@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+/* eslint-disable react/prop-types*/
 
 const Preview = (props) => {
   console.log(props);
@@ -6,7 +7,7 @@ const Preview = (props) => {
     <section className="preview">
       {/* Imagen del proyecto */}
       <div className="projectImage">
-      {props.photo ? (
+        {props.photo ? (
           <img src={props.photo} alt="Imagen del proyecto" className="projectImage__img" />
         ) : null}
       </div>
@@ -20,7 +21,7 @@ const Preview = (props) => {
         <div className="card__author">
           {/* Foto de la autora */}
           <div className="card__authorPhoto">
-          {props.image ? (
+            {props.image ? (
               <img src={props.image} alt="Imagen de la autora" className="authorPhoto__img" />
             ) : null}
           </div>
