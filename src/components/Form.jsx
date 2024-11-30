@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import GetAvatar from "./GetAvatar";
 
 function Form(props) {
   const handleChangeProject = (event) => {
@@ -31,6 +32,13 @@ function Form(props) {
   };
   const handleClickImage = () => {
     props.onSubmitImage();
+  };
+  const handleChangeProjectImage = (image) => {
+    props.onChangeProjectImage(image);
+  };
+  
+  const handleChangeAuthorImage = (image) => {
+    props.onChangeAuthorImage(image);
   };
 
   return (
@@ -112,6 +120,12 @@ function Form(props) {
         />
       </fieldset>
 
+      <GetAvatar text="Subir foto del proyecto" 
+      updateAvatar={handleChangeProjectImage}/>
+
+      <GetAvatar text="Subir foto de la autora" 
+      updateAvatar={handleChangeAuthorImage}/>
+
       <fieldset className="addForm__group--upload">
         <label htmlFor="image" className="button">
           Subir foto del proyecto
@@ -143,6 +157,9 @@ function Form(props) {
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onChangeName: PropTypes.func, // Declaramos la nueva prop
+
+  onChangeProjectImage: PropTypes.func, 
+  onChangeAuthorImage: PropTypes.func,
 };
 
 export default Form;

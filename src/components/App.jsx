@@ -27,10 +27,8 @@ function App() {
     desc: "Descripción del proyecto",
     autor: "Nombre de la autora",
     job: "Trabajo de la autora",
-    image:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsocialenterprise.es%2Fprogramas%2Fformacion-social-enterprises%2Fadalab%2F&psig=AOvVaw25EE_IPd39ZTN-_WQwgK9E&ust=1732722734374000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDiuamt-okDFQAAAAAdAAAAABAE",
-    photo:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsocialenterprise.es%2Fprogramas%2Fformacion-social-enterprises%2Fadalab%2F&psig=AOvVaw25EE_IPd39ZTN-_WQwgK9E&ust=1732722734374000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDiuamt-okDFQAAAAAdAAAAABAE",
+    imageProject: "",
+    imageAuthor: "",
   });
   //variable de estado que modifica la página para que aparezca la url
   const [url, setUrl] = useState("");
@@ -59,6 +57,15 @@ function App() {
   const handleRepoProject = (RepoProject) => {
     setProject({ ...project, repo: RepoProject });
   };
+
+  //imágenes proyecto y autora
+  const handleChangeProjectImage = (image) => {
+    setProject({ ...project, imageProject: image });
+  };
+  const handleChangeAuthorImage = (image) => {
+    setProject({ ...project, imageAuthor: image});
+  };
+
   const handleSubmitForm = () => {
     fetch("https://dev.adalab.es/api/projectCard", {
       method: "POST",
@@ -91,7 +98,10 @@ function App() {
             descProjectUser={project.desc}
             demoProjectUser={project.demo}
             repoProjectUser={project.repo}
-            imageProjectUser={project.image}
+            //imageProjectUser={project.image}
+
+            imageProjectUser={project.imageProject}
+            imageAuthorUser={project.imageAuthor}
           />
           <Form
             onChangeInput={handleNameProject}
@@ -103,6 +113,8 @@ function App() {
             onChangeDemo={handleDemoProject}
             onChangeRepo={handleRepoProject}
             onSubmitForm={handleSubmitForm}
+            onChangeProjectImage={handleChangeProjectImage} 
+            onChangeAuthorImage={handleChangeAuthorImage} 
           />
           {url}
         </main>
