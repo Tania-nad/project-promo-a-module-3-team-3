@@ -55,73 +55,85 @@ function App() {
   };
   const handleDemoProject = (demoProject) => {
     setProject({ ...project, demo: demoProject });
-    // Añadimos ambas imágenes:
-    const handleProjectImage = (photo) => {
-      setProject({ ...project, photo: photo });
-    };
-    const handleRepoProject = (RepoProject) => {
-      setProject({ ...project, repo: RepoProject });
-    };
-    const handleSubmitForm = () => {
-      fetch("https://dev.adalab.es/api/projectCard", {
-        method: "POST",
-        body: JSON.stringify(project),
-        headers: {
-          "Content-type": "application/json",
-        },
-      }).then((data) => {
-        console.log(data);
+  }
+  const handleRepoProject = (repoProject) => {
+    setProject({ ...project, repo: repoProject });
+  };
+
+  const handleProjectImage = (projectImage) => {
+    setProject({ ...project, image: projectImage }); // Updates the 'image' property
+  };
+
+  const handleAuthorImage = (authorImage) => {
+    setProject({ ...project, photo: authorImage }); // Updates the 'photo' property
+  };
+
+
+  const handleSubmitForm = () => {
+    fetch("https://dev.adalab.es/api/projectCard", {
+      method: "POST",
+      body: JSON.stringify(project),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API Response:", data);
         //constante para recoger los datos del servidor (url)
         setUrl(data.url);
 
-<<<<<<< HEAD
+
+
         //pintar en el html la url que devuelve el servidor
       });
-    };
-
-    return (
-      <>
-        <div className="container">
-          <Header />
-          <main className="main">
-            <Hero />
-            <Preview
-              /* tenemos que pasar un objeto con todas las props que sera un objeto, project es nuestro objeto, una sola prop con todas esas propiedades y en preview pasamos project.propiedad
-               */
-              nameProjectUser={project.name}
-              sloganProjectUser={project.slogan}
-              techProjectUser={project.technologies}
-              authorProjectUser={project.autor}
-              jobProjectUser={project.job}
-              descProjectUser={project.desc}
-              demoProjectUser={project.demo}
-              repoProjectUser={project.repo}
-              imageProjectUser={project.image}
-            />
-            <Form
-              onChangeInput={handleNameProject}
-              onChangeSlogan={handleChangeSlogan}
-              onChangeAuthor={handleAuthorProject}
-              onChangeJob={handleJobProject}
-              onChangeTech={handleTechProject}
-              onChangeDesc={handleDescProject}
-              onChangeDemo={handleDemoProject}
-              onChangeRepo={handleRepoProject}
-              onSubmitForm={handleSubmitForm}
-            />
-            {url}
-          </main>
-
-          <Footer />
-        </div>
-      </>
-    );
-=======
-      //pintar en el html la url que devuelve el servidor
-      setUrl(data.url);
-    });
->>>>>>> main
   };
-}
+
+  return (
+    <>
+      <div className="container">
+        <Header />
+        <main className="main">
+          <Hero />
+          <Preview
+            /* tenemos que pasar un objeto con todas las props que sera un objeto, project es nuestro objeto, una sola prop con todas esas propiedades y en preview pasamos project.propiedad
+             */
+            nameProjectUser={project.name}
+            sloganProjectUser={project.slogan}
+            techProjectUser={project.technologies}
+            authorProjectUser={project.autor}
+            jobProjectUser={project.job}
+            descProjectUser={project.desc}
+            demoProjectUser={project.demo}
+            repoProjectUser={project.repo}
+            imageProjectUser={project.image}
+          />
+          <Form
+            onChangeInput={handleNameProject}
+            onChangeSlogan={handleChangeSlogan}
+            onChangeAuthor={handleAuthorProject}
+            onChangeJob={handleJobProject}
+            onChangeTech={handleTechProject}
+            onChangeDesc={handleDescProject}
+            onChangeDemo={handleDemoProject}
+            onChangeRepo={handleRepoProject}
+            onChangeProjectImage={handleProjectImage}
+            onChangeAuthorImage={handleAuthorImage}
+            onSubmitForm={handleSubmitForm}
+          />
+
+          <p>Project URL: {url}</p>
+        </main>
+
+        <Footer />
+      </div>
+    </>
+  );
+  //pintar en el html la url que devuelve el servidor
+  //setUrl(data.url);
+};
+
+
 
 export default App;

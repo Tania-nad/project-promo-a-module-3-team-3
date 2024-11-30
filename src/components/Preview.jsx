@@ -40,6 +40,7 @@ const Preview = (props) => {
             <a
               className="icon icon__www"
               href={props.demoProjectUser}
+              target="_blank"
               title="Haz click para ver el proyecto online"
             >
               Web link
@@ -47,6 +48,7 @@ const Preview = (props) => {
             <a
               className="icon icon__github"
               href={props.repoProjectUser}
+              target="_blank"
               title="Haz click para ver el código del proyecto"
             >
               GitHub link
