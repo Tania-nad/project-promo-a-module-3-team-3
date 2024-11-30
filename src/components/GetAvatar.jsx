@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 
-function GetAvatar({updateAvatar, text='Get avatar!'}) {
+function GetAvatar({updateAvatar, text='Get avatar!', buttonClass }) {
   // creamos una propiedad de la clase que es la que vamos a usar en varios métodos para cargar la imagen
   // esto es un manejador de ficheros
   const fr = new FileReader();
@@ -60,7 +60,7 @@ function GetAvatar({updateAvatar, text='Get avatar!'}) {
 
     return (
     <div className="get-avatar">
-        <label className="get-avatar__label">
+        <label className={`get-avatar__label ${buttonClass}`}>
         {text}
         <input
             type="file"

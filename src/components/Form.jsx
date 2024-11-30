@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import GetAvatar from "./GetAvatar";
 
+
 function Form(props) {
   const handleChangeProject = (event) => {
     props.onChangeInput(event.target.value);
@@ -120,32 +121,22 @@ function Form(props) {
         />
       </fieldset>
 
-      <GetAvatar text="Subir foto del proyecto" 
-      updateAvatar={handleChangeProjectImage}/>
-
-      <GetAvatar text="Subir foto de la autora" 
-      updateAvatar={handleChangeAuthorImage}/>
-
-      <fieldset className="addForm__group--upload">
-        <label htmlFor="image" className="button">
-          Subir foto del proyecto
-        </label>
-        <input
-          className="addForm__hidden"
-          type="file"
-          name="image"
-          id="image"
-          onClick={handleClickImage}
+      <div className="addForm__group--upload">
+        {/* Pasa buttonClass con las clases de estilo al componente GetAvatar */}
+        <GetAvatar
+          text="Subir foto del proyecto"
+          updateAvatar={handleChangeProjectImage}
+          buttonClass="button button--large" // Pasamos las clases de estilo aquí
         />
-        <label htmlFor="photo" className="button">
-          Subir foto de la autora
-        </label>
-        <input
-          className="addForm__hidden"
-          type="file"
-          name="photo"
-          id="photo"
+        <GetAvatar
+          text="Subir foto de la autora"
+          updateAvatar={handleChangeAuthorImage}
+          buttonClass="button button--large" // Pasamos las clases de estilo aquí
         />
+      </div>
+
+
+      <fieldset className="addForm__buttons">
         <button className="button--large" onClick={handleSubmit}>
           Guardar proyecto
         </button>
@@ -157,7 +148,6 @@ function Form(props) {
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onChangeName: PropTypes.func, // Declaramos la nueva prop
-
   onChangeProjectImage: PropTypes.func, 
   onChangeAuthorImage: PropTypes.func,
 };
