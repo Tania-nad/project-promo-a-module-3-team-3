@@ -5,7 +5,7 @@ const Preview = (props) => {
     <section className="preview">
       <div
         className="projectImage"
-        style={{ backgroundImage: `url(${props.imgProjectUser.image})` }}
+        style={{ backgroundImage: `url(${props.imgProjectUser})` }}
       ></div>
       <article className="card">
         <h2 className="card__projectTitle">
