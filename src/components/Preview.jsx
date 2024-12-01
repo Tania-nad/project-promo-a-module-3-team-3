@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
-import '../scss/components/Preview.scss'; 
+import "../scss/components/Preview.scss";
 
 const Preview = (props) => {
   return (
     <section className="preview">
       <div className="projectImage">
-      {props.imageProjectUser && (
-          <img src={props.imageProjectUser} alt="Imagen del proyecto" />
-        )}
+        <img src={props.imageProjectUser} alt="Imagen del proyecto" />
       </div>
       <article className="card">
         <h2 className="card__projectTitle">
@@ -17,9 +15,7 @@ const Preview = (props) => {
         </h2>
         <div className="card__author">
           <div className="card__authorPhoto">
-          {props.imageAuthorUser && (
-              <img src={props.imageAuthorUser} alt="Foto de la autora" />
-            )}
+            <img src={props.imageAuthorUser} alt="Foto de la autora" />
           </div>
           <p className="card__job">{props.jobProjectUser}</p>
           <h3 className="card__name">{props.authorProjectUser}</h3>
@@ -58,8 +54,7 @@ Preview.propTypes = {
   nameProjectUser: PropTypes.string,
   technologies: PropTypes.string,
 
-  imageProjectUser: PropTypes.string, 
-  imageAuthorUser: PropTypes.string, 
+  imageProjectUser: PropTypes.string,
+  imageAuthorUser: PropTypes.string,
 };
 export default Preview;
-

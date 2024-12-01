@@ -27,8 +27,8 @@ function App() {
     desc: "Descripción del proyecto",
     autor: "Nombre de la autora",
     job: "Trabajo de la autora",
-    imageProject: "",
-    imageAuthor: "",
+    imageProject: "https://via.placeholder.com/150",
+    imageAuthor: "https://via.placeholder.com/150",
   });
   //variable de estado que modifica la página para que aparezca la url
   const [url, setUrl] = useState("");
@@ -63,7 +63,7 @@ function App() {
     setProject({ ...project, imageProject: image });
   };
   const handleChangeAuthorImage = (image) => {
-    setProject({ ...project, imageAuthor: image});
+    setProject({ ...project, imageAuthor: image });
   };
 
   const handleSubmitForm = () => {
@@ -73,14 +73,18 @@ function App() {
       headers: {
         "Content-type": "application/json",
       },
-    }).then((data) => {
-      console.log(data);
-      //constante para recoger los datos del servidor (url)
-      setUrl(data.url);
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        //constante para recoger los datos del servidor (url)
+        setUrl(data.cardURL);
 
-      //pintar en el html la url que devuelve el servidor
-      setUrl(data.url);
-    });
+        //pintar en el html la url que devuelve el servidor
+        setUrl(data.cardURL);
+      });
   };
 
   return (
@@ -113,8 +117,8 @@ function App() {
             onChangeDemo={handleDemoProject}
             onChangeRepo={handleRepoProject}
             onSubmitForm={handleSubmitForm}
-            onChangeProjectImage={handleChangeProjectImage} 
-            onChangeAuthorImage={handleChangeAuthorImage} 
+            onChangeProjectImage={handleChangeProjectImage}
+            onChangeAuthorImage={handleChangeAuthorImage}
           />
           {url}
         </main>
