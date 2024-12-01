@@ -14,7 +14,7 @@ const Header = () => {
           src={laptop}
           alt="Logo proyectos molones"
         />
-        <h1 className="header__title">Proyectos molones</h1>
+        <h1 className="header__title">Brillant Brains</h1>
       </a>
       <h1 className="nameOfProject">BRILLIANT BRAINS</h1>
     </header>

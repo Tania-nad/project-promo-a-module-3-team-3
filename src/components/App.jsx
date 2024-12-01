@@ -1,37 +1,31 @@
+// src/components/App.jsx
 import "../scss/App.scss";
 import Header from "./Header";
 import Preview from "./Preview";
 import Hero from "./Hero";
 import Form from "./Form";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-/* 
-  Cuando la usuaria haga click en guardar proyecto,
-    realizamos la petición al servidor para enviarle toda la info del formulario
-      recogemos la url que nos devuelve el servidor
-      pintamos esa url en la página web
-
-*/
 function App() {
-  //const [name, setName] = useState("Nombre del proyecto");
-  //const [slogan, setSlogan] = useState("Slogan");
-  //const [author, setAuthor] = useState("Nombre de la autora");
-  //const [job, setJob] = useState("Profesión");
   const [project, setProject] = useState({
     name: "Nombre del proyecto",
     slogan: "Slogan del proyecto",
     technologies: "Tecnologías",
-    repo: "",
-    demo: "",
+    repo: "https://books.adalab.es/materiales-del-curso-a-pw-ft/proyectos/p3_proyecto/p3_planificacion_dia",
+    demo: "https://books.adalab.es/materiales-del-curso-a-pw-ft/proyectos/p3_proyecto/p3_planificacion_dia",
     desc: "Descripción del proyecto",
     autor: "Nombre de la autora",
     job: "Trabajo de la autora",
-    imageProject: "https://via.placeholder.com/150",
-    imageAuthor: "https://via.placeholder.com/150",
+    image: "data:image/jpeg;base64",
+    photo: "data:image/jpeg;base64",
   });
-  //variable de estado que modifica la página para que aparezca la url
+
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("project", JSON.stringify(project));
+  }, [project]);
 
   const handleNameProject = (nameProject) => {
     setProject({ ...project, name: nameProject });
@@ -58,12 +52,11 @@ function App() {
     setProject({ ...project, repo: RepoProject });
   };
 
-  //imágenes proyecto y autora
-  const handleChangeProjectImage = (image) => {
-    setProject({ ...project, imageProject: image });
+  const handleChangeImage = (image) => {
+    setProject({ ...project, image });
   };
-  const handleChangeAuthorImage = (image) => {
-    setProject({ ...project, imageAuthor: image });
+  const handleChangePhoto = (photo) => {
+    setProject({ ...project, photo });
   };
 
   const handleSubmitForm = () => {
@@ -74,17 +67,15 @@ function App() {
         "Content-type": "application/json",
       },
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        //constante para recoger los datos del servidor (url)
-        setUrl(data.cardURL);
-
-        //pintar en el html la url que devuelve el servidor
-        setUrl(data.cardURL);
-      });
+        if (data.success) {
+          setUrl(data.cardURL); // Guardamos la URL en el estado
+        } else {
+          console.error("Error del servidor:", data.error);
+        }
+      })
+      .catch((error) => console.error("Error en la petición:", error));
   };
 
   return (
@@ -102,10 +93,8 @@ function App() {
             descProjectUser={project.desc}
             demoProjectUser={project.demo}
             repoProjectUser={project.repo}
-            //imageProjectUser={project.image}
-
-            imageProjectUser={project.imageProject}
-            imageAuthorUser={project.imageAuthor}
+            imageProjectUser={project.image}
+            imageAuthorUser={project.photo}
           />
           <Form
             onChangeInput={handleNameProject}
@@ -117,16 +106,15 @@ function App() {
             onChangeDemo={handleDemoProject}
             onChangeRepo={handleRepoProject}
             onSubmitForm={handleSubmitForm}
-            onChangeProjectImage={handleChangeProjectImage}
-            onChangeAuthorImage={handleChangeAuthorImage}
+            onChangeProjectImage={handleChangeImage}
+            onChangeAuthorImage={handleChangePhoto}
+            url={url}
           />
-          {url}
         </main>
-
         <Footer />
       </div>
     </>
   );
 }
 
-export default App;
+export default App; // Asegúrate de tener esta línea

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import GetAvatar from "./GetAvatar";
 
-
 function Form(props) {
   const handleChangeProject = (event) => {
     props.onChangeInput(event.target.value);
@@ -37,7 +36,7 @@ function Form(props) {
   const handleChangeProjectImage = (image) => {
     props.onChangeProjectImage(image);
   };
-  
+
   const handleChangeAuthorImage = (image) => {
     props.onChangeAuthorImage(image);
   };
@@ -79,7 +78,6 @@ function Form(props) {
             name="demo"
             id="demo"
             placeholder="Demo"
-            //target="_blank" no unciona en un input
           />
         </div>
         <input
@@ -93,7 +91,6 @@ function Form(props) {
         <textarea
           onChange={handleChangeDesc}
           className="addForm__input"
-          type="text"
           name="desc"
           id="desc"
           placeholder="Descripción"
@@ -122,34 +119,41 @@ function Form(props) {
       </fieldset>
 
       <div className="addForm__group--upload">
-        {/* Pasa buttonClass con las clases de estilo al componente GetAvatar */}
         <GetAvatar
           text="Subir foto del proyecto"
           updateAvatar={handleChangeProjectImage}
-          buttonClass="button button--large" // Pasamos las clases de estilo aquí
+          buttonClass="button button--large"
         />
         <GetAvatar
           text="Subir foto de la autora"
           updateAvatar={handleChangeAuthorImage}
-          buttonClass="button button--large" // Pasamos las clases de estilo aquí
+          buttonClass="button button--large"
         />
       </div>
-
 
       <fieldset className="addForm__buttons">
         <button className="button--large" onClick={handleSubmit}>
           Guardar proyecto
         </button>
       </fieldset>
+
+      {/* Aquí agregamos la lógica para mostrar la URL debajo del botón */}
+      {props.url && (
+        <p className="url-message">
+          La URL de proyecto es: <a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a>
+        </p>
+      )}
     </form>
   );
 }
 
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  onChangeName: PropTypes.func, // Declaramos la nueva prop
+  onChangeName: PropTypes.func, 
   onChangeProjectImage: PropTypes.func, 
   onChangeAuthorImage: PropTypes.func,
+  onSubmitForm: PropTypes.func.isRequired,
+  url: PropTypes.string, // Añadimos la prop para la URL
 };
 
 export default Form;

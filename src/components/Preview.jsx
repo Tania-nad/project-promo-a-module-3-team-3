@@ -5,7 +5,7 @@ const Preview = (props) => {
   return (
     <section className="preview">
       <div className="projectImage">
-        <img src={props.imageProjectUser} alt="Imagen del proyecto" />
+        {props.imageProjectUser && <img src={props.imageProjectUser} alt="" />}
       </div>
       <article className="card">
         <h2 className="card__projectTitle">
@@ -15,7 +15,9 @@ const Preview = (props) => {
         </h2>
         <div className="card__author">
           <div className="card__authorPhoto">
-            <img src={props.imageAuthorUser} alt="Foto de la autora" />
+            {props.imageAuthorUser && (
+              <img src={props.imageAuthorUser} alt="" />
+            )}
           </div>
           <p className="card__job">{props.jobProjectUser}</p>
           <h3 className="card__name">{props.authorProjectUser}</h3>
