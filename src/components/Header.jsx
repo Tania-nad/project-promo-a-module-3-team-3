@@ -1,5 +1,5 @@
-import icon from "../images/adalab.png";
-import laptop from "../images/laptop-code-solid.svg";
+import icon from "../images/logo_brains.png";
+
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
       >
         <img
           className="header__companyLogo"
-          src={laptop}
+          src={icon}
           alt="Logo proyectos molones"
         />
         <h1 className="header__title">Brillant Brains</h1>
