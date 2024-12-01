@@ -22,5 +22,5 @@
 - Clona el repositorio
 - Npm install (instala las dependencias)
 - Npm run dev (inicia la aplicación)
-- La aplicación se abrirá en: 
+- La aplicación se abrirá en: https://tania-nad.github.io/project-promo-a-module-3-team-3/
 
