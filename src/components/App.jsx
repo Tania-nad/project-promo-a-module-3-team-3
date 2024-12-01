@@ -1,3 +1,4 @@
+// src/components/App.jsx
 import "../scss/App.scss";
 import Header from "./Header";
 import Preview from "./Preview";
@@ -51,7 +52,6 @@ function App() {
     setProject({ ...project, repo: RepoProject });
   };
 
-  // Cambios para usar "image" y "photo"
   const handleChangeImage = (image) => {
     setProject({ ...project, image });
   };
@@ -70,7 +70,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          setUrl(data.url);
+          setUrl(data.cardURL); // Guardamos la URL en el estado
         } else {
           console.error("Error del servidor:", data.error);
         }
@@ -108,8 +108,8 @@ function App() {
             onSubmitForm={handleSubmitForm}
             onChangeProjectImage={handleChangeImage} 
             onChangeAuthorImage={handleChangePhoto} 
+            url={url} 
           />
-          {url}
         </main>
         <Footer />
       </div>
@@ -117,5 +117,4 @@ function App() {
   );
 }
 
-export default App;
-
+export default App; // Asegúrate de tener esta línea
