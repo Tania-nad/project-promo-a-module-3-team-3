@@ -6,6 +6,16 @@ function Form(props) {
     ev.preventDefault();
     props.onSubmitForm();
   };
+  const handleClickImage = () => {
+    props.onSubmitImage();
+  };
+  const handleChangeProjectImage = (image) => {
+    props.onChangeProjectImage(image);
+  };
+
+  const handleChangeAuthorImage = (image) => {
+    props.onChangeAuthorImage(image);
+  };
 
   return (
     <form className="addForm">
@@ -85,35 +95,35 @@ function Form(props) {
         />
       </fieldset>
 
-      {/* File Uploads Handled by GetAvatar */}
-      <GetAvatar
-        text="Subir foto de la autora"
-        updateAvatar={props.onChangeAuthorImage}
-      />
-      <GetAvatar
-        text="Subir foto del proyecto"
-        updateAvatar={props.onChangeProjectImage}
-      />
+      <div className="addForm__group--upload">
+        {/* Pasa buttonClass con las clases de estilo al componente GetAvatar */}
+        <GetAvatar
+          text="Subir foto del proyecto"
+          updateAvatar={handleChangeProjectImage}
+          buttonClass="button button--large" // Pasamos las clases de estilo aquí
+        />
+        <GetAvatar
+          text="Subir foto de la autora"
+          updateAvatar={handleChangeAuthorImage}
+          buttonClass="button button--large" // Pasamos las clases de estilo aquí
+        />
+      </div>
 
-      <button className="button--large" type="submit" onClick={handleSubmit}>
-        Guardar proyecto
-      </button>
+
+      <fieldset className="addForm__buttons">
+        <button className="button--large" onClick={handleSubmit}>
+          Guardar proyecto
+        </button>
+      </fieldset>
     </form>
   );
 }
 
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  onChangeSlogan: PropTypes.func.isRequired,
-  onChangeAuthor: PropTypes.func.isRequired,
-  onChangeJob: PropTypes.func.isRequired,
-  onChangeTech: PropTypes.func.isRequired,
-  onChangeDesc: PropTypes.func.isRequired,
-  onChangeRepo: PropTypes.func.isRequired,
-  onChangeDemo: PropTypes.func.isRequired,
-  onChangeProjectImage: PropTypes.func.isRequired,
-  onChangeAuthorImage: PropTypes.func.isRequired,
-  onSubmitForm: PropTypes.func.isRequired,
+  onChangeName: PropTypes.func, // Declaramos la nueva prop
+  onChangeProjectImage: PropTypes.func,
+  onChangeAuthorImage: PropTypes.func,
 };
 
 export default Form;

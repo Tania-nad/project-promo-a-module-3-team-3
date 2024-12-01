@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-function GetAvatar({ updateAvatar, text }) {
+
+function GetAvatar({ updateAvatar, text = 'Get avatar!', buttonClass }) {
   // creamos una propiedad de la clase que es la que vamos a usar en varios métodos para cargar la imagen
   // esto es un manejador de ficheros
   const fr = new FileReader();
@@ -59,13 +60,10 @@ function GetAvatar({ updateAvatar, text }) {
 
   return (
     <div className="get-avatar">
-      <label className="button" htmlFor="photo">
+      <label className={`get-avatar__label ${buttonClass}`}>
         {text}
         <input
-          className="addForm__hidden"
           type="file"
-          name="photo"
-          id="photo"
           ref={myFileField}
           style={{ display: 'none' }}
           onChange={uploadImage}

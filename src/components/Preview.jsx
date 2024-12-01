@@ -1,15 +1,14 @@
 import PropTypes from "prop-types";
-/* eslint-disable react/prop-types*/
+import '../scss/components/Preview.scss';
 
 const Preview = (props) => {
   console.log(props);
   return (
     <section className="preview">
-      {/* Imagen del proyecto */}
       <div className="projectImage">
-        {props.photo ? (
-          <img src={props.photo} alt="Imagen del proyecto" className="projectImage__img" />
-        ) : null}
+        {props.imageProjectUser && (
+          <img src={props.imageProjectUser} alt="Imagen del proyecto" />
+        )}
       </div>
       <article className="card">
         <h2 className="card__projectTitle">
@@ -17,13 +16,11 @@ const Preview = (props) => {
             {props.nameProjectUser}
           </span>
         </h2>
-
         <div className="card__author">
-          {/* Foto de la autora */}
           <div className="card__authorPhoto">
-            {props.image ? (
-              <img src={props.image} alt="Imagen de la autora" className="authorPhoto__img" />
-            ) : null}
+            {props.imageAuthorUser && (
+              <img src={props.imageAuthorUser} alt="Foto de la autora" />
+            )}
           </div>
           <p className="card__job">{props.jobProjectUser}</p>
           <h3 className="card__name">{props.authorProjectUser}</h3>
@@ -63,10 +60,9 @@ const Preview = (props) => {
 Preview.propTypes = {
   nameProjectUser: PropTypes.string,
   technologies: PropTypes.string,
-  imageProjectUser: PropTypes.string, // Puede ser null si no se sube la imagen
-  imageAuthorUser: PropTypes.string,  // Puede ser null si no se sube la imagen
+
+  imageProjectUser: PropTypes.string,
+  imageAuthorUser: PropTypes.string,
 };
 export default Preview;
-Preview.PropTypes = {
-  nameProjectUser: PropTypes.function,
-};
+
