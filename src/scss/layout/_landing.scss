@@ -1,0 +1,150 @@
+// Variables
+$primary-color: #eeb4d2;
+$secondary-color: #8e44ad;
+$background-color: #f9f0ff;
+$text-color: #333;
+
+// Global Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $background-color;
+    color: $text-color;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+// Header
+.header {
+    background-color: $primary-color;
+    padding: 1rem 0;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 50px;
+            margin-right: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__nav ul {
+        display: flex;
+        list-style: none;
+
+        li {
+            margin: 0 1rem;
+
+            a {
+                text-decoration: none;
+                color: $text-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// Hero Section
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(to right, $primary-color, $secondary-color);
+    color: white;
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        background-color: $secondary-color;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: darken($secondary-color, 10%);
+        }
+    }
+}
+
+// Projects Section
+.projects {
+    padding: 2rem 0;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .projects__list {
+        display: flex;
+        gap: 1rem;
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: center;
+
+            img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            h3 {
+                margin-top: 1rem;
+            }
+
+            .btn-small {
+                display: inline-block;
+                margin-top: 0.5rem;
+                padding: 0.5rem 1rem;
+                background-color: $primary-color;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: darken($primary-color, 10%);
+                }
+            }
+        }
+    }
+}
+
+// Footer
+.footer {
+    background-color: $secondary-color;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+
+    nav a {
+        color: white;
+        margin: 0 0.5rem;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
