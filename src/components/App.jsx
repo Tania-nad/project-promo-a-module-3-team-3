@@ -4,34 +4,27 @@ import Preview from "./Preview";
 import Hero from "./Hero";
 import Form from "./Form";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-/* 
-  Cuando la usuaria haga click en guardar proyecto,
-    realizamos la petición al servidor para enviarle toda la info del formulario
-      recogemos la url que nos devuelve el servidor
-      pintamos esa url en la página web
-
-*/
 function App() {
-  //const [name, setName] = useState("Nombre del proyecto");
-  //const [slogan, setSlogan] = useState("Slogan");
-  //const [author, setAuthor] = useState("Nombre de la autora");
-  //const [job, setJob] = useState("Profesión");
   const [project, setProject] = useState({
     name: "Nombre del proyecto",
     slogan: "Slogan del proyecto",
     technologies: "Tecnologías",
-    repo: "",
-    demo: "",
+    repo: "https://books.adalab.es/materiales-del-curso-a-pw-ft/proyectos/p3_proyecto/p3_planificacion_dia",
+    demo: "https://books.adalab.es/materiales-del-curso-a-pw-ft/proyectos/p3_proyecto/p3_planificacion_dia",
     desc: "Descripción del proyecto",
     autor: "Nombre de la autora",
     job: "Trabajo de la autora",
-    imageProject: "",
-    imageAuthor: "",
+    image: "https://via.placeholder.com/150", // Cambiado a "image"
+    photo: "https://via.placeholder.com/150", // Cambiado a "photo"
   });
-  //variable de estado que modifica la página para que aparezca la url
+
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("project", JSON.stringify(project));
+  }, [project]);
 
   const handleNameProject = (nameProject) => {
     setProject({ ...project, name: nameProject });
@@ -58,12 +51,12 @@ function App() {
     setProject({ ...project, repo: RepoProject });
   };
 
-  //imágenes proyecto y autora
-  const handleChangeProjectImage = (image) => {
-    setProject({ ...project, imageProject: image });
+  // Cambios para usar "image" y "photo"
+  const handleChangeImage = (image) => {
+    setProject({ ...project, image });
   };
-  const handleChangeAuthorImage = (image) => {
-    setProject({ ...project, imageAuthor: image});
+  const handleChangePhoto = (photo) => {
+    setProject({ ...project, photo });
   };
 
   const handleSubmitForm = () => {
@@ -73,14 +66,16 @@ function App() {
       headers: {
         "Content-type": "application/json",
       },
-    }).then((data) => {
-      console.log(data);
-      //constante para recoger los datos del servidor (url)
-      setUrl(data.url);
-
-      //pintar en el html la url que devuelve el servidor
-      setUrl(data.url);
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setUrl(data.url);
+        } else {
+          console.error("Error del servidor:", data.error);
+        }
+      })
+      .catch((error) => console.error("Error en la petición:", error));
   };
 
   return (
@@ -98,10 +93,8 @@ function App() {
             descProjectUser={project.desc}
             demoProjectUser={project.demo}
             repoProjectUser={project.repo}
-            //imageProjectUser={project.image}
-
-            imageProjectUser={project.imageProject}
-            imageAuthorUser={project.imageAuthor}
+            imageProjectUser={project.image} // Cambiado a "image"
+            imageAuthorUser={project.photo} // Cambiado a "photo"
           />
           <Form
             onChangeInput={handleNameProject}
@@ -113,12 +106,11 @@ function App() {
             onChangeDemo={handleDemoProject}
             onChangeRepo={handleRepoProject}
             onSubmitForm={handleSubmitForm}
-            onChangeProjectImage={handleChangeProjectImage} 
-            onChangeAuthorImage={handleChangeAuthorImage} 
+            onChangeProjectImage={handleChangeImage} // Cambiado a "image"
+            onChangeAuthorImage={handleChangePhoto} // Cambiado a "photo"
           />
           {url}
         </main>
-
         <Footer />
       </div>
     </>

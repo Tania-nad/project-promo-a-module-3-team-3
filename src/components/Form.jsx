@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import GetAvatar from "./GetAvatar";
 
-
 function Form(props) {
   const handleChangeProject = (event) => {
     props.onChangeInput(event.target.value);
@@ -29,17 +28,15 @@ function Form(props) {
   };
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    props.onSubmitForm();
+    props.onSubmitForm(); // Usar directamente el prop pasado
   };
-  const handleClickImage = () => {
-    props.onSubmitImage();
+
+  // Cambios para usar "image" y "photo"
+  const handleChangeImage = (image) => {
+    props.onChangeImage(image); // Cambiado de "onChangeProjectImage" a "onChangeImage"
   };
-  const handleChangeProjectImage = (image) => {
-    props.onChangeProjectImage(image);
-  };
-  
-  const handleChangeAuthorImage = (image) => {
-    props.onChangeAuthorImage(image);
+  const handleChangePhoto = (photo) => {
+    props.onChangePhoto(photo); // Cambiado de "onChangeAuthorImage" a "onChangePhoto"
   };
 
   return (
@@ -79,7 +76,6 @@ function Form(props) {
             name="demo"
             id="demo"
             placeholder="Demo"
-            //target="_blank" no unciona en un input
           />
         </div>
         <input
@@ -122,19 +118,17 @@ function Form(props) {
       </fieldset>
 
       <div className="addForm__group--upload">
-        {/* Pasa buttonClass con las clases de estilo al componente GetAvatar */}
         <GetAvatar
           text="Subir foto del proyecto"
-          updateAvatar={handleChangeProjectImage}
-          buttonClass="button button--large" // Pasamos las clases de estilo aquí
+          updateAvatar={handleChangeImage} // Cambiado a "handleChangeImage"
+          buttonClass="button button--large"
         />
         <GetAvatar
           text="Subir foto de la autora"
-          updateAvatar={handleChangeAuthorImage}
-          buttonClass="button button--large" // Pasamos las clases de estilo aquí
+          updateAvatar={handleChangePhoto} // Cambiado a "handleChangePhoto"
+          buttonClass="button button--large"
         />
       </div>
-
 
       <fieldset className="addForm__buttons">
         <button className="button--large" onClick={handleSubmit}>
@@ -147,9 +141,16 @@ function Form(props) {
 
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  onChangeName: PropTypes.func, // Declaramos la nueva prop
-  onChangeProjectImage: PropTypes.func, 
-  onChangeAuthorImage: PropTypes.func,
+  onChangeSlogan: PropTypes.func.isRequired,
+  onChangeAuthor: PropTypes.func.isRequired,
+  onChangeJob: PropTypes.func.isRequired,
+  onChangeTech: PropTypes.func.isRequired,
+  onChangeDesc: PropTypes.func.isRequired,
+  onChangeRepo: PropTypes.func.isRequired,
+  onChangeDemo: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
+  onChangeImage: PropTypes.func.isRequired, // Actualizado
+  onChangePhoto: PropTypes.func.isRequired, // Actualizado
 };
 
 export default Form;
