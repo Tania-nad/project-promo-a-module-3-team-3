@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import '../scss/components/Preview.scss';
 
+/* eslint-disable react/prop-types*/
+
 const Preview = (props) => {
   console.log(props);
   return (

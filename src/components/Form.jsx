@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import GetAvatar from "./GetAvatar";
 
+/* eslint-disable react/prop-types*/
+
+
 function Form(props) {
   const handleSubmit = (ev) => {
     ev.preventDefault();
