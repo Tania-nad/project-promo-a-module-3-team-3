@@ -6,3 +6,10 @@
 fieldset {
     border: 0;
 }
+
+a {
+    text-decoration: none;
+    /* Quita el subrayado */
+    color: inherit;
+    /* Hace que tome el color del elemento padre */
+}

@@ -264,6 +264,10 @@
   
   .addForm .addForm__group--upload {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
   
   .addForm .addForm__hidden {
@@ -304,7 +308,6 @@
   .button--link {
     display: block;
     width: fit-content;
-  
     margin-inline: auto;
     margin-block: 8px;
     padding: 5px 18px;
@@ -317,7 +320,7 @@
     backdrop-filter: blur(10px);
     border-style: solid;
     border-width: 1px;
-    border-image-source: linear-gradient(to bottom, #2a2a2a 0%, rgba(0, 0, 0, 0));
+    //border-image-source: linear-gradient(to bottom, #2a2a2a 0%, rgba(0, 0, 0, 0));
     border-image-slice: 1;
     border-radius: 20px;
     background-color: var(--color-dark-lilac);
@@ -381,9 +384,9 @@
   }
   
   .icon__www {
-    background-image: url('../images/icons/globe-solid.svg');
+    background-image: url('../images/globe-solid.svg');
   }
   
   .icon__github {
-    background-image: url('../images/icons/github.svg');
+    background-image: url('../images/github.svg');
   }

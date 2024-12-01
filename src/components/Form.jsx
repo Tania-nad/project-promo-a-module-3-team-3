@@ -147,7 +147,7 @@ function Form(props) {
 
 Form.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  onChangeName: PropTypes.func, // Declaramos la nueva prop
+  onChangeName: PropTypes.func, 
   onChangeProjectImage: PropTypes.func, 
   onChangeAuthorImage: PropTypes.func,
 };
