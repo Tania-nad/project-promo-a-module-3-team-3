@@ -5,7 +5,9 @@ import Preview from "./Preview";
 import Hero from "./Hero";
 import Form from "./Form";
 import Footer from "./Footer";
+import Landing from "./Landing";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [project, setProject] = useState({
@@ -80,39 +82,49 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <Header />
-        <main className="main">
-          <Hero />
-          <Preview
-            nameProjectUser={project.name}
-            sloganProjectUser={project.slogan}
-            techProjectUser={project.technologies}
-            authorProjectUser={project.autor}
-            jobProjectUser={project.job}
-            descProjectUser={project.desc}
-            demoProjectUser={project.demo}
-            repoProjectUser={project.repo}
-            imageProjectUser={project.image}
-            imageAuthorUser={project.photo}
-          />
-          <Form
-            onChangeInput={handleNameProject}
-            onChangeSlogan={handleChangeSlogan}
-            onChangeAuthor={handleAuthorProject}
-            onChangeJob={handleJobProject}
-            onChangeTech={handleTechProject}
-            onChangeDesc={handleDescProject}
-            onChangeDemo={handleDemoProject}
-            onChangeRepo={handleRepoProject}
-            onSubmitForm={handleSubmitForm}
-            onChangeProjectImage={handleChangeImage}
-            onChangeAuthorImage={handleChangePhoto}
-            url={url}
-          />
-        </main>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/main"
+          element={
+            <>
+              <div className="container">
+                <Header />
+                <main className="main">
+                  <Hero />
+                  <Preview
+                    nameProjectUser={project.name}
+                    sloganProjectUser={project.slogan}
+                    techProjectUser={project.technologies}
+                    authorProjectUser={project.autor}
+                    jobProjectUser={project.job}
+                    descProjectUser={project.desc}
+                    demoProjectUser={project.demo}
+                    repoProjectUser={project.repo}
+                    imageProjectUser={project.image}
+                    imageAuthorUser={project.photo}
+                  />
+                  <Form
+                    onChangeInput={handleNameProject}
+                    onChangeSlogan={handleChangeSlogan}
+                    onChangeAuthor={handleAuthorProject}
+                    onChangeJob={handleJobProject}
+                    onChangeTech={handleTechProject}
+                    onChangeDesc={handleDescProject}
+                    onChangeDemo={handleDemoProject}
+                    onChangeRepo={handleRepoProject}
+                    onSubmitForm={handleSubmitForm}
+                    onChangeProjectImage={handleChangeImage}
+                    onChangeAuthorImage={handleChangePhoto}
+                    url={url}
+                  />
+                </main>
+                <Footer />
+              </div>
+            </>
+          }
+        />
+      </Routes>
     </>
   );
 }
