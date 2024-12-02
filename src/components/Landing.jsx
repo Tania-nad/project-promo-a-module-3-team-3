@@ -1,4 +1,5 @@
 import "../scss/layout/_landing.scss";
+import { Link } from 'react-router-dom';
 
 function Landing() {
     return (
@@ -77,6 +78,10 @@ function Landing() {
                         <a href="#projects">Proyectos</a> |
                         <a href="#about">Sobre Nosotros</a>
                     </nav>
+                    {/* Link to navigate to the App component */}
+                    <Link to="/app" className="btn">
+                        Go to App
+                    </Link>
                 </div>
             </footer>
         </>
